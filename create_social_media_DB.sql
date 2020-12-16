@@ -30,8 +30,8 @@ CREATE TABLE  users (
 CREATE TABLE posts (
 	post_id  INT(11) NOT NULL AUTO_INCREMENT,
 	user_id int(11) NOT NULL,
-	timestamp TIMESTAMP(2) NOT NULL,
-	post VARCHAR(256) NOT NULL,
+	timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	post VARCHAR(255) NOT NULL,
 	PRIMARY KEY(post_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
@@ -40,8 +40,8 @@ CREATE TABLE comments(
 	comment_id INT(11) NOT NULL AUTO_INCREMENT,
 	post_id INT(11) NOT NULL,
 	user_id int(11) NOT NULL,
-	timestamp TIMESTAMP(2) NOT NULL,
-	comment VARCHAR(256) NOT NULL,
+	timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	comment VARCHAR(255) NOT NULL,
 	PRIMARY KEY(comment_id),
 	FOREIGN KEY(post_id) REFERENCES posts(post_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
